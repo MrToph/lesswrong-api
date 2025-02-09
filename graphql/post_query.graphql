@@ -1,0 +1,21 @@
+query PostQuery($id: String!) {
+  post(input: { selector: { _id: $id } }) {
+    result {
+      _id
+      title
+      author
+      user {
+        displayName
+      }
+      postedAt
+      slug
+      pageUrl
+      baseScore
+      wordCount
+      htmlBody
+      contents {
+        markdown
+      }
+    }
+  }
+}

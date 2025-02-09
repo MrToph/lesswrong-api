@@ -1,0 +1,41 @@
+query CommentsQuery($terms: JSON) {
+  comments(input: { terms: $terms }) {
+    results {
+      _id
+      parentCommentId
+      author
+      user {
+        displayName
+      }
+      postedAt
+      pageUrl
+      baseScore
+      voteCount
+      htmlBody
+      deleted
+      contents {
+        markdown
+      }
+    }
+  }
+}
+
+# these variables don't work for some reason. Probably because terms is a JSON scalar type
+# query CommentsQuery($postId: String!, $limit: Int!) {
+#   comments(input: {terms: {view: "postCommentsTop", postId: $postId, limit: $limit } }) {
+#     results {
+#       _id
+#       parentCommentId
+#       author
+#       postedAt
+#       pageUrl
+#       baseScore
+#       voteCount
+#       htmlBody
+#       deleted
+#       contents {
+#         markdown
+#       }
+#     }
+#   }
+# }
